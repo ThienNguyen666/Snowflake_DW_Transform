@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_customers
+    columns:
+      - name: customerid
+        tests: [not_null, unique]
+
+  - name: dim_products
+    columns:
+      - name: productid
+        tests: [not_null, unique]
+
+  - name: fct_sales
+    columns:
+      - name: salesorderid
+        tests: [not_null]

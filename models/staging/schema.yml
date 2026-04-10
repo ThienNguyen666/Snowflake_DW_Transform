@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw
+    database: CUSTOMER_BI
+    schema: STAGING_AREA
+    tables:
+      - name: CUSTOMER
+      - name: PERSON
+      - name: PRODUCT
+      - name: PRODUCTCATEGORY
+      - name: PRODUCTSUBCATEGORY
+      - name: SALESORDERDETAIL
+      - name: SALESORDERHEADER
+      - name: VINDIVIDUALCUSTOMER
+      - name: VPERSONDEMOGRAPHICS
