@@ -1,7 +1,16 @@
+{{ config(materialized='view') }}
+
 select
-    orderdate,
-    sum(linetotal) as revenue,
-    count(distinct salesorderid) as total_orders,
-    sum(linetotal) / count(distinct salesorderid) as avg_order_value
-from {{ ref('fct_sales') }}
-group by orderdate
+    t.year,
+    t.month,
+    t.month_name,
+
+    sum(f.linetotal) as revenue,
+    count(distinct f.salesorderid) as total_orders,
+    sum(f.linetotal) / count(distinct f.salesorderid) as avg_order_value
+
+from {{ ref('fct_sales') }} f
+join {{ ref('dim_time') }} t
+    on f.date_key = t.date_key
+
+group by 1,2,3
